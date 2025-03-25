@@ -1,6 +1,6 @@
 import AuthForm from "@/components/AuthForm"
 
-const page = () => {
+const page = async () => {
   return (
     <AuthForm type="sign-up"/>
   )

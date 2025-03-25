@@ -31,7 +31,7 @@ export default function Home() {
         <div className="interviews-section">
           {/* <p>You haven&apos;t taken any interviews yet</p> */}
           {dummyInterviews.map((interview) => (
-            <InterviewCard {...interview} />
+            <InterviewCard {...interview} key={interview.id}/>
           ))}
         </div>
       </section>
