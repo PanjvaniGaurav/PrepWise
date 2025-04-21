@@ -1,3 +1,4 @@
+"use server";
 import { feedbackSchema } from "@/constants";
 import { db } from "@/firebase/admin";
 import { google } from "@ai-sdk/google";
@@ -106,6 +107,7 @@ export async function getFeedbackByInterviewId(
     .collection("feedback")
     .where("interviewId", "==", interviewId)
     .where("userId", "==", userId)
+    .orderBy("createdAt", "desc") // Order by createdAt in descending order to get the latest
     .limit(1)
     .get();
   if (feedback.empty) return null;
