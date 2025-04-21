@@ -2,7 +2,7 @@ import Agent from "@/components/Agent";
 import DisplayTechIcons from "@/components/DisplayTechIcons";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewById } from "@/lib/actions/general.action";
-import { getRandomInterviewCover } from "@/lib/utils";
+import { getCompanyLogo } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -19,7 +19,7 @@ const page = async ({ params }: RouteParams) => {
         <div className="flex flex-col gap-4 items-center max-sm:flex-col">
           <div className="flex flex-row gap-4 items-center">
             <Image
-              src={getRandomInterviewCover()}
+              src={interview.companyLogo}
               alt="image-cover"
               width={40}
               height={40}
@@ -39,6 +39,7 @@ const page = async ({ params }: RouteParams) => {
         interviewId={id}
         type="interview"
         questions={interview.questions}
+        companyName={interview.companyName}
       />
     </>
   );

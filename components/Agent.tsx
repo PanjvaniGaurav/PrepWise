@@ -28,6 +28,7 @@ const Agent = ({
   feedbackId,
   type,
   questions,
+  companyName
 }: AgentProps) => {
   const router = useRouter();
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
@@ -122,6 +123,7 @@ const Agent = ({
         variableValues: {
           username: userName,
           userid: userId,
+          companyName: companyName || "",
         },
       });
     } else {

@@ -1,4 +1,4 @@
-import { getRandomInterviewCover } from "@/lib/utils";
+import { getCompanyLogo } from "@/lib/utils";
 import daysjs from "dayjs";
 import Image from "next/image";
 import { Button } from "./ui/button";
@@ -13,6 +13,7 @@ const InterviewCard = async ({
   type,
   techstack,
   createdAt,
+  companyName,
 }: InterviewCardProps) => {
   const feedback =
     userId && id
@@ -25,6 +26,13 @@ const InterviewCard = async ({
   const formattedDate = daysjs(
     feedback?.createdAt || createdAt || Date.now()
   ).format("DD MMM, YYYY");
+
+  // Extract company name from role (e.g. "Frontend Developer at Google" -> "Google")
+  // const companyName = role.includes(" at ") ? role.split(" at ")[1].trim() : "";
+
+  // Get company logo URL
+  const logoUrl = await getCompanyLogo(companyName!);
+
   return (
     <div className="card-border w-[360px] max-sm:w-full min-h-96">
       <div className="card-interview">
@@ -36,11 +44,11 @@ const InterviewCard = async ({
             <p className="badge-text">{normalizedType}</p>
           </div>
           <Image
-            src={getRandomInterviewCover()}
-            alt="cover image"
+            src={logoUrl}
+            alt={`${companyName || "company"} logo`}
             width={90}
             height={90}
-            className="rounded-full object-fit size-[90px]"
+            className="rounded-full object-cover size-[90px]"
           />
           <h3 className="mt-5 capitalize">{role} interview</h3>
           <div className="flex flex-row gap-5 mt-3">
