@@ -2,7 +2,6 @@ import Agent from "@/components/Agent";
 import DisplayTechIcons from "@/components/DisplayTechIcons";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewById } from "@/lib/actions/general.action";
-import { getCompanyLogo } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -39,7 +38,6 @@ const page = async ({ params }: RouteParams) => {
         interviewId={id}
         type="interview"
         questions={interview.questions}
-        companyName={interview.companyName}
       />
     </>
   );

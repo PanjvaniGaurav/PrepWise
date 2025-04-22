@@ -57,7 +57,6 @@ interface AgentProps {
   feedbackId?: string;
   type: "generate" | "interview";
   questions?: string[];
-  companyName?: string;
 }
 
 interface RouteParams {

@@ -28,7 +28,6 @@ const Agent = ({
   feedbackId,
   type,
   questions,
-  companyName
 }: AgentProps) => {
   const router = useRouter();
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
@@ -122,8 +121,7 @@ const Agent = ({
       await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
         variableValues: {
           username: userName,
-          userid: userId,
-          companyName: companyName || "",
+          userid: userId
         },
       });
     } else {
